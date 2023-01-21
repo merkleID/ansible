@@ -1,0 +1,10 @@
+- name: aptupdate
+  hosts: hubs
+  remote_user: luca
+  become: yes
+  tasks: 
+    - name: Ansible apt update cache if it is older than 1 hour
+      register: updatesys
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
